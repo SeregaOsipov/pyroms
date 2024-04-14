@@ -25,7 +25,7 @@ def shapiro1(Finp,order,scheme=1):
 
 
     Im = Finp.shape[0]
-    order2 = np.int(np.floor(order/2))
+    order2 = int(np.floor(order/2))
 
     cor=np.zeros((Im))
     Fcor=np.zeros((Im))

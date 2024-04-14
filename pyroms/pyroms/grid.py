@@ -112,23 +112,23 @@ class ROMS_gridinfo(object):
         if info[4] == 'roms':
             self.name     =          info[1]
             self.grdfile  =          info[2]
-            self.N        =   np.int(info[3])
+            self.N        =   int(info[3])
             self.grdtype  =          info[4]
-            self.Vtrans   =   np.int(info[5])
-            self.theta_s  = np.float(info[6])
-            self.theta_b  = np.float(info[7])
-            self.Tcline   = np.float(info[8])
+            self.Vtrans   =   int(info[5])
+            self.theta_s  = float(info[6])
+            self.theta_b  = float(info[7])
+            self.Tcline   = float(info[8])
 
         elif info[4] == 'z':
             nline = len(info)
             dep = info[5]
             for line in range(6,nline):
                 dep = dep + info[line]
-            dep = np.array(dep, dtype=np.float)
+            dep = np.array(dep, dtype=float)
 
             self.name    =        info[1]
             self.grdfile =        info[2]
-            self.N       = np.int(info[3])
+            self.N       = int(info[3])
             self.grdtype =        info[4]
             self.depth   = dep
 
@@ -151,19 +151,19 @@ class ROMS_gridinfo(object):
 
         #now write this to deal with both ROMS 3 and 2
         try:
-          self.Vtrans=np.float(hist.Vstretching)
-          self.theta_s=np.float(hist.theta_s)
-          self.theta_b=np.float(hist.theta_b)
-          self.Tcline=np.float(hist.Tcline)
+          self.Vtrans=float(hist.Vstretching)
+          self.theta_s=float(hist.theta_s)
+          self.theta_b=float(hist.theta_b)
+          self.Tcline=float(hist.Tcline)
         except AttributeError:
           try:
-            self.Vtrans=np.float(hist.variables['Vstretching'][:])
+            self.Vtrans=float(hist.variables['Vstretching'][:])
           except:
             print('variable Vtransform not found in history file. Defaulting to Vtrans=1')
             self.Vtrans=1
-          self.theta_s=np.float(hist.variables['theta_s'][:])
-          self.theta_b=np.float(hist.variables['theta_b'][:])
-          self.Tcline=np.float(hist.variables['Tcline'][:])
+          self.theta_s=float(hist.variables['theta_s'][:])
+          self.theta_b=float(hist.variables['theta_b'][:])
+          self.Tcline=float(hist.variables['Tcline'][:])
 
 
 def print_ROMS_gridinfo(gridid):

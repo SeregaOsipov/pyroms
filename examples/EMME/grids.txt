@@ -1,0 +1,9 @@
+id = EMME
+name = EMME
+grdfile = /project/k1090/osipovs/Data/COAWST/EMME/roms_model_grid.nc
+N = 50
+grdtype = roms
+Vtrans = 2
+theta_s = 7.0
+theta_b = 0.1
+Tcline = 250
